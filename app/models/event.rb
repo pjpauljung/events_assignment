@@ -1,6 +1,9 @@
 class Event < ApplicationRecord
   # Direct associations
 
+  has_many   :comments,
+             :dependent => :destroy
+
   has_many   :interested_events,
              :class_name => "Rsvp",
              :dependent => :destroy
