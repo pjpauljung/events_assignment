@@ -29,16 +29,20 @@
 
       <!-- Edit link rsvp start -->
       <div class="col">
-        <%= link_to edit_rsvp_url(rsvp), class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-edit"></i>
+        <% if current_user == @rsvp.user %>
+          <%= link_to edit_rsvp_url(rsvp), class: "btn btn-block btn-sm btn-outline-secondary" do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
         <% end %>
       </div>
       <!-- Edit link rsvp end -->
 
       <!-- Delete link rsvp start -->
       <div class="col">
-        <%= link_to rsvp, method: :delete, data: { confirm: "Do you really want to delete this rsvp?" }, class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-trash-alt"></i>
+        <% if current_user == @rsvp.user %>
+          <%= link_to rsvp, method: :delete, data: { confirm: "Do you really want to delete this rsvp?" }, class: "btn btn-block btn-outline-secondary" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
         <% end %>
       </div>
       <!-- Delete link rsvp end -->

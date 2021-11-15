@@ -1,4 +1,6 @@
 class RsvpsController < ApplicationController
+  before_action :current_user_must_be_rsvp_user, only: [:edit, :update, :destroy] 
+
   before_action :set_rsvp, only: [:show, :edit, :update, :destroy]
 
   # GET /rsvps
@@ -57,6 +59,14 @@ class RsvpsController < ApplicationController
 
 
   private
+
+  def current_user_must_be_rsvp_user
+    set_rsvp
+    unless current_user == @rsvp.user
+      redirect_back fallback_location: root_path, alert: "You are not authorized for that."
+    end
+  end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_rsvp
       @rsvp = Rsvp.find(params[:id])
