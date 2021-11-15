@@ -5,7 +5,7 @@ class RsvpsController < ApplicationController
 
   # GET /rsvps
   def index
-    @rsvps = Rsvp.all
+    @rsvps = current_user.interested_events.page(params[:page]).per(10)
   end
 
   # GET /rsvps/1
