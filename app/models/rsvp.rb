@@ -1,6 +1,9 @@
 class Rsvp < ApplicationRecord
   # Direct associations
 
+  belongs_to :user,
+             :counter_cache => :interested_events_count
+
   belongs_to :event,
              :counter_cache => :interested_events_count
 

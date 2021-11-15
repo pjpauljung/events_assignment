@@ -4,6 +4,8 @@ RSpec.describe User, type: :model do
   
     describe "Direct Associations" do
 
+    it { should have_many(:interested_events) }
+
     end
 
     describe "InDirect Associations" do
