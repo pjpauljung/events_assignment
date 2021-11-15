@@ -6,27 +6,21 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>User</dt>
-      <!-- Display user_id start -->
       <dd>
         <% if @rsvp.user.present? %>
           <%= link_to rsvp.user, rsvp.user %>
         <% end %>
       </dd>
-      <!-- Display user_id end -->
 
       <dt>Event</dt>
-      <!-- Display event_id start -->
       <dd>
         <% if @rsvp.event.present? %>
           <%= link_to rsvp.event, rsvp.event %>
         <% end %>
       </dd>
-      <!-- Display event_id end -->
 
       <dt>Rsvp selection</dt>
-      <!-- Display rsvp_selection start -->
       <dd><%= rsvp.rsvp_selection %></dd>
-      <!-- Display rsvp_selection end -->
 
     </dl>
 
@@ -35,7 +29,6 @@
         <%= link_to_show_or_back rsvp, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link rsvp start -->
       <div class="col">
         <% if current_user == @rsvp.user %>
           <%= link_to edit_rsvp_url(rsvp), class: "btn btn-block btn-sm btn-outline-secondary" do %>
@@ -43,9 +36,7 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Edit link rsvp end -->
 
-      <!-- Delete link rsvp start -->
       <div class="col">
         <% if current_user == @rsvp.user %>
           <%= link_to rsvp, method: :delete, data: { confirm: "Do you really want to delete this rsvp?" }, class: "btn btn-block btn-outline-secondary" do %>
@@ -53,7 +44,6 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Delete link rsvp end -->
     </div>
   </div>
 

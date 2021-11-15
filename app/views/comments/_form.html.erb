@@ -1,12 +1,7 @@
 <% was_validated = comment.errors.any? %>
 
 <%= form_with(model: comment, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for user_id start -->
-  <!-- Input for "user_id" start -->
   <%= f.hidden_field :user_id, value: current_user.id %>
-  <!-- Input for "user_id" end -->
-  <!-- Label and input for user_id end -->
-  <!-- Label and input for event_id start -->
   <div class="form-group">
     <% event_class = "form-control" %>
     <% event_was_invalid = comment.errors.include?(:event) %>
@@ -20,9 +15,7 @@
     <% end %>
 
     <%= f.label :event_id %>
-    <!-- Input for event_id start -->
     <%= f.collection_select :event_id, Event.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for event_id end -->
     <% if event_was_invalid %>
       <% comment.errors.full_messages_for(:event).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -31,8 +24,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for event_id end -->
-  <!-- Label and input for comment start -->
   <div class="form-group">
     <% comment_class = "form-control" %>
     <% comment_was_invalid = comment.errors.include?(:comment) %>
@@ -46,9 +37,7 @@
     <% end %>
 
     <%= f.label :comment %>
-    <!-- Input for comment start -->
     <%= f.text_field :comment, class: comment_class, placeholder: "Enter comment" %>
-    <!-- Input for comment end -->
     <% if comment_was_invalid %>
       <% comment.errors.full_messages_for(:comment).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -57,6 +46,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for comment end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>
