@@ -5,7 +5,8 @@ class RsvpsController < ApplicationController
 
   # GET /rsvps
   def index
-    @rsvps = current_user.interested_events.page(params[:page]).per(10)
+    @q = current_user.interested_events.ransack(params[:q])
+    @rsvps = @q.result(:distinct => true).includes(:event, :user).page(params[:page]).per(10)
   end
 
   # GET /rsvps/1
