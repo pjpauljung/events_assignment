@@ -11,6 +11,8 @@ class EventResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :comments
+
   has_many   :interested_events,
              resource: RsvpResource
 
