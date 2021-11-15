@@ -8,6 +8,8 @@ class RsvpResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :user
+
   belongs_to :event
 
   # Indirect associations
