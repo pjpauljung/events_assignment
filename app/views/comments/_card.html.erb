@@ -7,12 +7,20 @@
     <dl class="mb-1">
       <dt>User</dt>
       <!-- Display user_id start -->
-      <dd><%= comment.user_id %></dd>
+      <dd>
+        <% if @comment.user.present? %>
+          <%= link_to comment.user, comment.user %>
+        <% end %>
+      </dd>
       <!-- Display user_id end -->
 
       <dt>Event</dt>
       <!-- Display event_id start -->
-      <dd><%= comment.event_id %></dd>
+      <dd>
+        <% if @comment.event.present? %>
+          <%= link_to comment.event, comment.event %>
+        <% end %>
+      </dd>
       <!-- Display event_id end -->
 
       <dt>Comment</dt>
