@@ -8,6 +8,8 @@ class EventsController < ApplicationController
 
   # GET /events/1
   def show
+    @comment = Comment.new
+    @rsvp = Rsvp.new
   end
 
   # GET /events/new

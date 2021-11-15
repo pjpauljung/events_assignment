@@ -24,7 +24,12 @@ class RsvpsController < ApplicationController
     @rsvp = Rsvp.new(rsvp_params)
 
     if @rsvp.save
-      redirect_to @rsvp, notice: 'Rsvp was successfully created.'
+      message = 'Rsvp was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @rsvp, notice: message
+      end
     else
       render :new
     end
