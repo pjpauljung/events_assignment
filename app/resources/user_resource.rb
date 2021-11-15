@@ -15,5 +15,4 @@ class UserResource < ApplicationResource
              resource: RsvpResource
 
   # Indirect associations
-
 end

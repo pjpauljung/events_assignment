@@ -1,10 +1,10 @@
-require 'open-uri'
+require "open-uri"
 class Event < ApplicationRecord
   before_validation :geocode_location
 
   def geocode_location
-    if self.location.present?
-      url = "https://maps.googleapis.com/maps/api/geocode/json?key=#{ENV['GMAP_API_KEY']}&address=#{URI.encode(self.location)}"
+    if location.present?
+      url = "https://maps.googleapis.com/maps/api/geocode/json?key=#{ENV['GMAP_API_KEY']}&address=#{URI.encode(location)}"
 
       raw_data = open(url).read
 
@@ -22,11 +22,11 @@ class Event < ApplicationRecord
   # Direct associations
 
   has_many   :comments,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :interested_events,
-             :class_name => "Rsvp",
-             :dependent => :destroy
+             class_name: "Rsvp",
+             dependent: :destroy
 
   # Indirect associations
 
@@ -37,5 +37,4 @@ class Event < ApplicationRecord
   def to_s
     event_name
   end
-
 end

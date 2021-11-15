@@ -4,7 +4,7 @@ class Comment < ApplicationRecord
   belongs_to :user
 
   belongs_to :event,
-             :counter_cache => true
+             counter_cache: true
 
   # Indirect associations
 
@@ -15,5 +15,4 @@ class Comment < ApplicationRecord
   def to_s
     user.to_s
   end
-
 end

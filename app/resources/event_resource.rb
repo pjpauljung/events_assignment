@@ -17,5 +17,4 @@ class EventResource < ApplicationResource
              resource: RsvpResource
 
   # Indirect associations
-
 end

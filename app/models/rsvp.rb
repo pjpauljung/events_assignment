@@ -2,10 +2,10 @@ class Rsvp < ApplicationRecord
   # Direct associations
 
   belongs_to :user,
-             :counter_cache => :interested_events_count
+             counter_cache: :interested_events_count
 
   belongs_to :event,
-             :counter_cache => :interested_events_count
+             counter_cache: :interested_events_count
 
   # Indirect associations
 
@@ -16,5 +16,4 @@ class Rsvp < ApplicationRecord
   def to_s
     user.to_s
   end
-
 end
