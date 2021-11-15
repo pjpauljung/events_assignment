@@ -1,0 +1,66 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Event #<%= event.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Event name</dt>
+      <!-- Display event_name start -->
+      <dd><%= event.event_name %></dd>
+      <!-- Display event_name end -->
+
+      <dt>Event start</dt>
+      <!-- Display event_start start -->
+      <dd><%= event.event_start %></dd>
+      <!-- Display event_start end -->
+
+      <dt>Event end</dt>
+      <!-- Display event_end start -->
+      <dd><%= event.event_end %></dd>
+      <!-- Display event_end end -->
+
+      <dt>Location</dt>
+      <!-- Display location start -->
+      <dd><%= event.location %></dd>
+      <!-- Display location end -->
+
+      <dt>Host</dt>
+      <!-- Display host start -->
+      <dd><%= event.host %></dd>
+      <!-- Display host end -->
+
+      <dt>Details</dt>
+      <!-- Display details start -->
+      <dd><%= event.details %></dd>
+      <!-- Display details end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back event, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link event start -->
+      <div class="col">
+        <%= link_to edit_event_url(event), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link event end -->
+
+      <!-- Delete link event start -->
+      <div class="col">
+        <%= link_to event, method: :delete, data: { confirm: "Do you really want to delete this event?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link event end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(event.updated_at) %> ago
+  </div>
+</div>
