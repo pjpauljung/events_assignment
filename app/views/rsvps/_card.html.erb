@@ -1,0 +1,51 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Rsvp #<%= rsvp.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>User</dt>
+      <!-- Display user_id start -->
+      <dd><%= rsvp.user_id %></dd>
+      <!-- Display user_id end -->
+
+      <dt>Event</dt>
+      <!-- Display event_id start -->
+      <dd><%= rsvp.event_id %></dd>
+      <!-- Display event_id end -->
+
+      <dt>Rsvp selection</dt>
+      <!-- Display rsvp_selection start -->
+      <dd><%= rsvp.rsvp_selection %></dd>
+      <!-- Display rsvp_selection end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back rsvp, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link rsvp start -->
+      <div class="col">
+        <%= link_to edit_rsvp_url(rsvp), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link rsvp end -->
+
+      <!-- Delete link rsvp start -->
+      <div class="col">
+        <%= link_to rsvp, method: :delete, data: { confirm: "Do you really want to delete this rsvp?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link rsvp end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(rsvp.updated_at) %> ago
+  </div>
+</div>

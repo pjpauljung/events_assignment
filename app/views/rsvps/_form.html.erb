@@ -1,0 +1,83 @@
+<% was_validated = rsvp.errors.any? %>
+
+<%= form_with(model: rsvp, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for user_id start -->
+  <div class="form-group">
+    <% user_class = "form-control" %>
+    <% user_was_invalid = rsvp.errors.include?(:user) %>
+
+    <% if was_validated %>
+      <% if user_was_invalid %>
+        <% user_class << " is-invalid" %>
+      <% else %>
+        <% user_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :user_id %>
+    <!-- Input for user_id start -->
+    <%= f.number_field :user_id, class: user_class, placeholder: "Enter user" %>
+    <!-- Input for user_id end -->
+    <% if user_was_invalid %>
+      <% rsvp.errors.full_messages_for(:user).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for user_id end -->
+  <!-- Label and input for event_id start -->
+  <div class="form-group">
+    <% event_class = "form-control" %>
+    <% event_was_invalid = rsvp.errors.include?(:event) %>
+
+    <% if was_validated %>
+      <% if event_was_invalid %>
+        <% event_class << " is-invalid" %>
+      <% else %>
+        <% event_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :event_id %>
+    <!-- Input for event_id start -->
+    <%= f.number_field :event_id, class: event_class, placeholder: "Enter event" %>
+    <!-- Input for event_id end -->
+    <% if event_was_invalid %>
+      <% rsvp.errors.full_messages_for(:event).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for event_id end -->
+  <!-- Label and input for rsvp_selection start -->
+  <div class="form-group">
+    <% rsvp_selection_class = "form-control" %>
+    <% rsvp_selection_was_invalid = rsvp.errors.include?(:rsvp_selection) %>
+
+    <% if was_validated %>
+      <% if rsvp_selection_was_invalid %>
+        <% rsvp_selection_class << " is-invalid" %>
+      <% else %>
+        <% rsvp_selection_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :rsvp_selection %>
+    <!-- Input for rsvp_selection start -->
+    <%= f.text_field :rsvp_selection, class: rsvp_selection_class, placeholder: "Enter rsvp selection" %>
+    <!-- Input for rsvp_selection end -->
+    <% if rsvp_selection_was_invalid %>
+      <% rsvp.errors.full_messages_for(:rsvp_selection).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for rsvp_selection end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
