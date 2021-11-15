@@ -22,7 +22,11 @@
 
       <dt>Location</dt>
       <!-- Display location start -->
-      <dd><%= event.location %></dd>
+      <dd>
+        <div>
+          <%= render partial: "events/one_photo_map" %>
+        </div>
+      </dd>
       <!-- Display location end -->
 
       <dt>Host</dt>
