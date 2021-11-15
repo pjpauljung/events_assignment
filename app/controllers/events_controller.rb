@@ -3,7 +3,7 @@ class EventsController < ApplicationController
 
   # GET /events
   def index
-    @events = Event.all
+    @events = Event.page(params[:page]).per(10)
     @location_hash = Gmaps4rails.build_markers(@events.where.not(:location_latitude => nil)) do |event, marker|
       marker.lat event.location_latitude
       marker.lng event.location_longitude
